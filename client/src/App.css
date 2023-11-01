@@ -31,6 +31,13 @@
   }
 }
 
+.form-container {
+  display: flex;
+  height: 150px;
+  align-items: center;
+  justify-content: center;
+}
+
 .container {
   border: 1px solid blue;
   padding-bottom: 20px;

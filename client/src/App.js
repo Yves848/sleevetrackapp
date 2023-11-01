@@ -7,7 +7,7 @@ import NewWeight from "./components/NewWeight";
 function App() {
   const [data, setData] = React.useState(null);
   React.useEffect(() => {
-    fetch("evolution",{mode: "no-cors"})
+    fetch("evolution", { mode: "no-cors" })
       .then((res) => res.json())
       .then((data) => {
 
@@ -15,6 +15,8 @@ function App() {
       }
       );
   }, []);
+
+
 
   async function postData() {
 
@@ -33,7 +35,10 @@ function App() {
   return (
     <div className="App">
       <header className="App-header">
-        <button onClick={postData}></button>
+        <div className="form-container">
+          <NewWeight onClick={postData}/>
+        </div>
+
         <div className="container">
           {data ?
             <Grid data={data} />
