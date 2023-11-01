@@ -1,6 +1,4 @@
 import React from "react";
-import logo from "./logo.svg";
-import "./App.css";
 import Grid from './components/Grid';
 import NewWeight from "./components/NewWeight";
 
@@ -19,7 +17,6 @@ function App() {
 
 
   async function postData() {
-
     // POST request using fetch with async/await
     const requestOptions = {
       method: 'POST',
@@ -29,27 +26,19 @@ function App() {
     const response = await fetch(`/insert?date="2023-10-30"&poids=113.8`);
     const data = await response.json();
     console.log(data);
-
   }
 
   return (
-    <div className="App">
-      <header className="App-header">
-        <div className="form-container">
-          <NewWeight onClick={postData}/>
-        </div>
-
-        <div className="container">
-          {data ?
-            <Grid data={data} />
-            :
-            <p>"Loading..."</p>
-          }
-        </div>
-        Over
-      </header>
-
-
+    <div className="w-full">
+      <NewWeight onClick={postData} />
+      {/* <div>
+        {data ?
+          <Grid className="" data={data} />
+          :
+          <p>"Loading..."</p>
+        }
+      </div>
+      Over */}
     </div>
   );
 }

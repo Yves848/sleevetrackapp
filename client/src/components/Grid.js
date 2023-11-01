@@ -18,13 +18,13 @@ export default function Grid({ data }) {
   })
   .map((row => {
     return (
-      <div className='row'>
+      <div className=''>
         <p>{toDAte(row.date)}</p><p>{row.poids}</p>
       </div>
     );
   }))
   // console.log(listItems);
   return (
-    <div className='grid'>{listItems}</div>);
+    <div>{listItems}</div>);
 
 }
