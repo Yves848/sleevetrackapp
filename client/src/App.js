@@ -30,17 +30,16 @@ function App() {
   }
 
   return (
-    <div className="w-full">
+    <div className="flex flex-col w-full">
       <Header></Header>
       <NewWeight onClick={postData} />
-      {/* <div>
+      <div className="h-64 flex flex-col items-center">
         {data ?
-          <Grid className="" data={data} />
+          <Grid data={data} />
           :
-          <p>"Loading..."</p>
+          <div>"Loading..."</div>
         }
       </div>
-      Over */}
     </div>
   );
 }
