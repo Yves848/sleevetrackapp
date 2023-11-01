@@ -1,6 +1,7 @@
 import React from "react";
 import Grid from './components/Grid';
 import NewWeight from "./components/NewWeight";
+import Header from "./components/Header";
 
 function App() {
   const [data, setData] = React.useState(null);
@@ -30,6 +31,7 @@ function App() {
 
   return (
     <div className="w-full">
+      <Header></Header>
       <NewWeight onClick={postData} />
       {/* <div>
         {data ?
