@@ -1,32 +1,47 @@
 import './Grid.css';
-
+import {FontAwesomeIcon} from '@fortawesome/react-fontawesome';
+import { faEdit, faTrash } from '@fortawesome/free-solid-svg-icons';
+import { useEffect } from 'react';
 function toDAte(date) {
   const date1 = String(date).match(/\d{4}-\d{2}-\d{2}/);
   return date1;
 }
 
-export default function Grid({ data }) {
-
-  const handleclick = ((event,id) => {
-    console.log(id);
+export default function Grid(props) {
+  useEffect(()=>{
+    console.log(props);
+  },[])
+  
+  const handleclick = ((event, id) => {
+    event.preventDefault();
+    console.log('click',id);
   });
-  const listItems = data.rows.sort((a, b) => {
+ 
+
+  const listItems = props.data.rows.sort((a, b) => {
     if (a.date < b.date) { return 1 }
     if (a.date > b.date) { return -1 }
     return 0
   })
-    .map(((row,index) => {
-      console.log(row.id);
+    .map(((row, index) => {
+      //console.log(row.id);
       return (
-        <div key={row.id} 
-        className='flex flex-row justify-between w-8/12 hover:bg-blue-800'
-        onClick={event =>  handleclick(event,row.id)}><span className="font-['Fira_Mono']">{toDAte(row.date)}</span><span className="font-['Fira_Mono']">{row.poids}</span></div>
+        <div key={row.id}
+          className='flex flex-row  w-8/12 hover:bg-blue-800'>
+          <FontAwesomeIcon icon={faTrash} className='w-6 self-center cursor-pointer' onClick={event => props.onDelete(event,row.id)} ></FontAwesomeIcon>
+          <FontAwesomeIcon icon={faEdit} className='w-6 self-center cursor-pointer' onClick={event => handleclick(event,row.id)} ></FontAwesomeIcon>
+          <p className="w-6/12 font-['Fira_Mono']">{toDAte(row.date)}</p>
+          <p className="w-4/12 font-['Fira_Mono']">{row.poids}</p></div>
       );
     }))
 
   return (
     <div className='flex flex-col items-center w-4/6 border overflow-y-auto'>
-      <p className='flex flex-row justify-between w-8/12 sticky top-0 bg-slate-900 text-white'><span className="font-['Fira_Mono']">Date</span><span className="font-['Fira_Mono']">Poids</span></p>
+      <div className='flex flex-row w-8/12 sticky top-0 bg-slate-900 text-white'>
+        <p className='w-6'></p>
+        <p className='w-6'></p>
+        <p className="w-6/12 font-['Fira_Mono']">Date</p>
+        <p className="font-['Fira_Mono']">Poids</p></div>
       {listItems}
     </div>
   );

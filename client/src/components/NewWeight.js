@@ -45,7 +45,7 @@ export default function NewHeight(props) {
         </label>
       </form>
       <div className="flex flex-col items-center my-2 w-4/6 h-10">
-        <button className="w-full h-full bg-red-400 border rounded border-b-rose-300" onClick={(e) => props.onClick(date,poids)}>Post</button>
+        <button className="w-full h-full bg-red-400 border rounded border-b-rose-300" onClick={(e) => props.onClick(date,poids)}>Ajouter</button>
       </div>
     </div>
   );

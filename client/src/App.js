@@ -14,7 +14,18 @@ function App() {
       );
   }, []);
 
-
+  async function handleDelete(event, id) {
+    console.log(`delete?id${id}`);
+      const response = await fetch(`/delete?id=${id}`);
+      const res = await response.json();
+      console.log(res);
+      fetch("evolution", { mode: "no-cors" })
+        .then((res) => res.json())
+        .then((data) => {
+          setData(data);
+        }
+        );
+  }
 
   async function postData(date, poids) {
     const response = await fetch(`/insert?date=${date}&poids=${poids}`);
@@ -34,7 +45,7 @@ function App() {
       <NewWeight onClick={postData} />
       <div className="h-64 flex flex-col items-center">
         {data ?
-          <Grid data={data} />
+          <Grid data={data} onDelete={handleDelete} />
           :
           <div>"Loading..."</div>
         }
