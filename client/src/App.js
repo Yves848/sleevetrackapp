@@ -9,7 +9,6 @@ function App() {
     fetch("evolution", { mode: "no-cors" })
       .then((res) => res.json())
       .then((data) => {
-
         setData(data);
       }
       );
@@ -17,16 +16,16 @@ function App() {
 
 
 
-  async function postData() {
-    // POST request using fetch with async/await
-    const requestOptions = {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({ date: Date.now().toString(), poids: 113.8 })
-    };
-    const response = await fetch(`/insert?date="2023-10-30"&poids=113.8`);
-    const data = await response.json();
-    console.log(data);
+  async function postData(date, poids) {
+    const response = await fetch(`/insert?date=${date}&poids=${poids}`);
+    const res = await response.json();
+    console.log(res);
+    fetch("evolution", { mode: "no-cors" })
+      .then((res) => res.json())
+      .then((data) => {
+        setData(data);
+      }
+      );
   }
 
   return (

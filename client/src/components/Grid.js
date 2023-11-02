@@ -6,14 +6,21 @@ function toDAte(date) {
 }
 
 export default function Grid({ data }) {
+
+  const handleclick = ((event,id) => {
+    console.log(id);
+  });
   const listItems = data.rows.sort((a, b) => {
     if (a.date < b.date) { return 1 }
     if (a.date > b.date) { return -1 }
     return 0
   })
     .map(((row,index) => {
+      console.log(row.id);
       return (
-        <p key={index} className='flex flex-row justify-between w-8/12'><span className="font-['Fira_Mono']">{toDAte(row.date)}</span><span className="font-['Fira_Mono']">{row.poids}</span></p>
+        <div key={row.id} 
+        className='flex flex-row justify-between w-8/12 hover:bg-blue-800'
+        onClick={event =>  handleclick(event,row.id)}><span className="font-['Fira_Mono']">{toDAte(row.date)}</span><span className="font-['Fira_Mono']">{row.poids}</span></div>
       );
     }))
 
