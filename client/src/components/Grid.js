@@ -24,7 +24,6 @@ export default function Grid(props) {
     return 0
   })
     .map(((row, index) => {
-      //console.log(row.id);
       return (
         <div key={row.id}
           className='flex flex-row  w-8/12 hover:bg-blue-800'>

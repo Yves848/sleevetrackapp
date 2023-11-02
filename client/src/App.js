@@ -6,25 +6,24 @@ import Header from "./components/Header";
 function App() {
   const [data, setData] = React.useState(null);
   React.useEffect(() => {
+    loadData()
+  }, []);
+
+  function loadData() {
     fetch("evolution", { mode: "no-cors" })
       .then((res) => res.json())
       .then((data) => {
         setData(data);
       }
       );
-  }, []);
+  }
 
   async function handleDelete(event, id) {
     console.log(`delete?id${id}`);
-      const response = await fetch(`/delete?id=${id}`);
-      const res = await response.json();
-      console.log(res);
-      fetch("evolution", { mode: "no-cors" })
-        .then((res) => res.json())
-        .then((data) => {
-          setData(data);
-        }
-        );
+    const response = await fetch(`/delete?id=${id}`);
+    const res = await response.json();
+    console.log(res);
+    loadData()
   }
 
   async function postData(date, poids) {

@@ -2,10 +2,15 @@
 
 @tailwind base;
 
+html {
+  height: 100%
+}
+
 @layer base {
   body {
     @apply bg-slate-600;
     @apply text-yellow-50;
+    @apply h-full;
   }
 }
 
