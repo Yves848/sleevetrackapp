@@ -7,17 +7,15 @@ export default function NewHeight(props) {
   const [poids, setPoids] = React.useState(115);
 
   useEffect(() => {
-    const d = new Date()
-    setDate(`${d.getFullYear().toFixed()}-${d.getMonth().toFixed()}-${d.getDay().toFixed().padStart(2,'0')}`);
+    const d = new Date(Date.now());
+    setDate(`${d.getFullYear().toFixed()}-${d.getMonth()+1}-${d.getDate().toFixed().padStart(2,'0')}`);
   },[]);
 
   const handleDateChange = (event) => {
-    console.log('Date change', event.target.value);
     setDate(event.target.value);
   }
 
   const handlePoidsChange = (event) => {
-    console.log('Poids Change', event.target.value)
     setPoids(event.target.value);
   }
 
