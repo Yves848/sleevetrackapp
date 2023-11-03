@@ -14,7 +14,7 @@ function App() {
   React.useEffect(() => {
     loadData()
     applyTheme();
-  }, []);
+  },[]);
 
   const [isDark, setisDark]= React.useState(true);
 
@@ -29,7 +29,7 @@ function App() {
 
   function applyTheme() {
     let th = ""
-    setisDark((isDark) => setisDark(!isDark));
+    setisDark((isDark) => !isDark);
     (isDark ?
       th = "light" : th = "dark");
     setTheme(th);

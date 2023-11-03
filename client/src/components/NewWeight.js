@@ -1,4 +1,5 @@
 import React, { useEffect } from "react";
+import { Button } from "react-daisyui"
 
 export default function NewHeight(props) {
 
@@ -8,8 +9,8 @@ export default function NewHeight(props) {
 
   useEffect(() => {
     const d = new Date(Date.now());
-    setDate(`${d.getFullYear().toFixed()}-${d.getMonth()+1}-${d.getDate().toFixed().padStart(2,'0')}`);
-  },[]);
+    setDate(`${d.getFullYear().toFixed()}-${d.getMonth() + 1}-${d.getDate().toFixed().padStart(2, '0')}`);
+  }, []);
 
   const handleDateChange = (event) => {
     setDate(event.target.value);
@@ -21,9 +22,9 @@ export default function NewHeight(props) {
 
   return (
     <div className="flex flex-col w-full items-center gap-1 mt ">
-      <form className="flex flex-row p-4 items-baseline w-4/6 justify-evenly border border-blue-500 rounded" >
-        <label className="block"><span className="block text-sm font-medium text-slate-300">Date</span>
-          <input className="bg-slate-600 border-spacing-2 font-semibold text-white border rounded p-2"
+      <form className="flex flex-row p-4 items-baseline w-4/6 justify-evenly border rounded" >
+        <label className="block"><span className="block text-sm font-medium">Date</span>
+          <input className="b border-spacing-2 font-semibold  border rounded p-2"
             id="date"
             name="date"
             placeholder="Date"
@@ -31,8 +32,8 @@ export default function NewHeight(props) {
             value={date}
             onChange={handleDateChange}></input>
         </label>
-        <label className="block"><span className="block text-sm font-medium text-slate-300">Poids</span>
-          <input className="bg-slate-600 border-spacing-2 font-semibold text-white border rounded p-2"
+        <label className="block"><span className="block text-sm font-medium ">Poids</span>
+          <input className="border-spacing-2 font-semibold  border rounded p-2"
             id="poids"
             name="poids"
             placeholder="Poids"
@@ -42,8 +43,8 @@ export default function NewHeight(props) {
             onChange={handlePoidsChange}></input>
         </label>
       </form>
-      <div className="flex flex-col items-center my-2 w-4/6 h-10">
-        <button className="w-full h-full bg-red-400 border rounded border-b-rose-300" onClick={(e) => props.onClick(date,poids)}>Ajouter</button>
+      <div className="flex flex-col items-center my-4 w-4/6 h-10">
+        <Button className="w-full h-full border rounded " color="primary" onClick={(e) => props.onClick(date, poids)}>Ajouter</Button>
       </div>
     </div>
   );

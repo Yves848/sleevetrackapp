@@ -35,8 +35,8 @@ export default function Grid(props) {
     }))
 
   return (
-    <div className='flex flex-col items-center w-4/6 border overflow-y-auto'>
-      <div className='flex flex-row w-8/12 sticky top-0 bg-slate-900 text-white'>
+    <div className='flex flex-col items-center w-4/6 border overflow-y-auto '>
+      <div className='flex flex-row w-8/12 sticky top-0 bg-slate-500'>
         <p className='w-6'></p>
         <p className='w-6'></p>
         <p className="w-6/12 font-['Fira_Mono']">Date</p>
