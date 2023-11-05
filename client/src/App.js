@@ -2,10 +2,12 @@ import React from "react";
 import Grid from './components/Grid';
 import NewWeight from "./components/NewWeight";
 import Header from "./components/Header";
-import { useTheme, Theme, Button, Swap } from "react-daisyui" 
+import { useTheme, Theme, Button, Swap } from "react-daisyui"
 
 function App() {
+  let th = "light"
   const [data, setData] = React.useState(null);
+  const [isDark, setisDark] = React.useState(true);
   const {
     theme,
     setTheme
@@ -14,9 +16,10 @@ function App() {
   React.useEffect(() => {
     loadData()
     applyTheme();
-  },[]);
+  });
 
-  const [isDark, setisDark]= React.useState(true);
+
+
 
   function loadData() {
     fetch("evolution", { mode: "no-cors" })
@@ -27,11 +30,16 @@ function App() {
       );
   }
 
+  function handleThemeClick() {
+    console.log('handleThemeClick')
+    setisDark((isDark) => !isDark)
+    applyTheme()
+  }
+
   function applyTheme() {
-    let th = ""
-    setisDark((isDark) => !isDark);
+    //console.log('applyTheme',isDark);
     (isDark ?
-      th = "light" : th = "dark");
+      th = "dark" : th = "light");
     setTheme(th);
     document.getElementsByTagName('html')[0].setAttribute('data-theme', th);
   }
@@ -66,7 +74,8 @@ function App() {
           :
           <div>"Loading..."</div>
         }
-        <Swap onElement="On" offElement="Off" rotate="true" active={isDark} onClick={applyTheme}></Swap>
+        <Swap onElement="On" offElement="Off" rotate="true"   onChange={handleThemeClick} ></Swap>
+        <Swap onElement="On" offElement="Off" rotate="true" ></Swap>
       </div>
     </div>
   );
